@@ -9,6 +9,7 @@ class MediumExtension < ::Middleman::Extension
   def initialize(app, options_hash={}, &block)
     super
     require 'rss'
+    require 'nokogiri'
     puts options.source
   end
 
