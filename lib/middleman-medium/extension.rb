@@ -10,10 +10,6 @@ class MediumExtension < ::Middleman::Extension
     super
     puts options.source
   end
-  alias :included :registered
-
-  def after_configuration
-  end
 
   def fetch_medium_posts
     rss_results = []
