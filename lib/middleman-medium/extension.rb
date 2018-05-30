@@ -2,22 +2,29 @@
 require 'middleman-core'
 
 # Extension namespace
-class MyExtension < ::Middleman::Extension
-  option :my_option, 'default', 'An example option'
+class MediumExtension < ::Middleman::Extension
+  option :source, 'https://blog.continuum.cl/feed', 'https://medium.com/feed/your-account'
+  expose_to_template :fetch_medium_posts
 
   def initialize(app, options_hash={}, &block)
-    # Call super to build options from the options_hash
     super
-
-    # Require libraries only when activated
-    # require 'necessary/library'
-
-    # set up your extension
-    # puts options.my_option
+    puts options.source
   end
+  alias :included :registered
 
   def after_configuration
-    # Do something
+  end
+
+  def fetch_medium_posts
+    rss_results = []
+    rss = RSS::Parser.parse(open(options.source).read, false).items
+    rss.each do |result|
+      document = Nokogiri::HTML.fragment(result.content_encoded)
+      img = document&.search('img')&.first['src'] || 'https://picsum.photos/300/200?image=579'
+      result = { title: result.title, date: result.pubDate, link: result.link, category: result&.category&.content, img: img }
+      rss_results.push(result)
+    end
+    rss_results
   end
 
   # A Sitemap Manipulator
