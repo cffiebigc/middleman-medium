@@ -10,7 +10,6 @@ class MediumExtension < ::Middleman::Extension
     super
     require 'rss'
     require 'nokogiri'
-    puts options.source
   end
 
   def fetch_medium_posts
