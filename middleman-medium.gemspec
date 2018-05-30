@@ -5,11 +5,11 @@ Gem::Specification.new do |s|
   s.name        = "middleman-medium"
   s.version     = "0.0.1"
   s.platform    = Gem::Platform::RUBY
-  # s.authors     = ["Your Name"]
-  # s.email       = ["email@example.com"]
+  s.authors     = ["Carlos Fiebig"]
+  s.email       = ["cffiebigc@gmail.com"]
   # s.homepage    = "http://example.com"
-  # s.summary     = %q{A short summary of your extension}
-  # s.description = %q{A longer description of your extension}
+  s.summary     = %q{Fetch medium posts from feed}
+  s.description = %q{Fetch medium posts from feed}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
