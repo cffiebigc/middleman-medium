@@ -13,23 +13,26 @@ class MediumExtension < ::Middleman::Extension
   end
 
   def fetch_medium_posts
-    rss_results = []
-    rss = RSS::Parser.parse(open(options.source).read, false).items
-    rss.each do |result|
-      document = Nokogiri::HTML.fragment(result.content_encoded)
-      img = document&.search('img')&.first['src'] || 'https://picsum.photos/300/200?image=579'
-      result = { title: result.title, date: result.pubDate, link: result.link, category: result&.category&.content, img: img }
-      rss_results.push(result)
-    end
-    rss_results
+    medium_rss_to_hash(open(options.source).read)
   end
 
-  # A Sitemap Manipulator
-  # def manipulate_resource_list(resources)
-  # end
+  def medium_rss_parser(feed)
+    posts = []
+    rss = RSS::Parser.parse(feed, false).items
+    rss.each do |item|
+      posts.push(rss_item_to_hash(item))
+    end
+    posts
+  end
 
-  # helpers do
-  #   def a_helper
-  #   end
-  # end
+  def rss_item_to_hash(item)
+    document = Nokogiri::HTML.fragment(item.content_encoded)
+    {
+      title: item.title,
+      date: item.pubDate,
+      url: item.link,
+      category: item&.category&.content,
+      img: document&.search('img')&.first['src']
+    }
+  end
 end
