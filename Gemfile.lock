@@ -26,6 +26,7 @@ GEM
     builder (3.2.3)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
     contracts (0.13.0)
     cucumber (3.1.0)
@@ -60,6 +61,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     memoist (0.16.0)
+    method_source (0.9.0)
     middleman-cli (4.2.1)
       thor (>= 0.17.0, < 2.0)
     middleman-core (4.2.1)
@@ -98,6 +100,9 @@ GEM
     padrino-support (0.13.3.4)
       activesupport (>= 3.1)
     parallel (1.12.1)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (3.0.2)
     rack (2.0.5)
     rake (12.3.1)
@@ -141,6 +146,7 @@ DEPENDENCIES
   cucumber
   middleman-cli
   middleman-medium!
+  pry (~> 0.11)
   rake
   rdoc
   rspec
