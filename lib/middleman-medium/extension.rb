@@ -13,7 +13,7 @@ class MediumExtension < ::Middleman::Extension
   end
 
   def fetch_medium_posts
-    medium_rss_to_hash(open(options.source).read)
+    medium_rss_parser(open(options.source).read)
   end
 
   def medium_rss_parser(feed)
