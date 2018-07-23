@@ -1,7 +1,7 @@
 # middleman-medium
-Fetches posts preview from Medium Feed
+Fetches posts previews from a Medium Feed on every build.
 
-If what you need is to build a preview of you latest medium posts on your site this is the right middleman extension for you.
+If what you need is to build a preview of you latest medium posts on your site this is the right middleman extension for you. It's still meant to generate static pages, so remember to rebuild/redeploy your production site when you add new medium posts (or just schedule a re-deploy on a daily/weekly/etc basis).
 
 Just add it to your `config.rb` file like any other middleman extension.
 
